@@ -1,18 +1,21 @@
+// BACK END LOGIC
+
+// Constructor for the 'Player' object.
 function Player(type) {
   this.type = type;
 }
-
+// Constructor for the 'Space' object.
 function Space(x, y) {
   this.x = x;
   this.y = y;
   this.marked = "";
   this.score = 0;
 }
-
+// Constructor for the 'Board' object.
 function Board() {
   this.spaces = [];
 }
-
+// Prototype for the 'Board' object.
 Board.prototype.makeSpaces = function() {
   for (var i=0; i<3; i++) {
     this.spaces.push(new Space(i, 0));
@@ -20,7 +23,7 @@ Board.prototype.makeSpaces = function() {
     this.spaces.push(new Space(i, 2));
   }
 }
-
+// Prototype for the 'Board' object.
 Board.prototype.checkScore = function() {
   for (var i=0; i< 3; i++) {
     if ((this.spaces[i].score + this.spaces[i + 3].score + this.spaces[i + 6].score === 3 || this.spaces[i].score + this.spaces[i + 3].score + this.spaces[i + 6].score === -3)) {
@@ -38,8 +41,8 @@ Board.prototype.checkScore = function() {
   } else {
   }
   return "no";
-}
-
+}; // End of the Prototype for the 'Board' object.
+// Update the score after making a move.
 var markedValue = function(checkedValue) {
   if (checkedValue === "X") {
     return -1;
@@ -49,7 +52,7 @@ var markedValue = function(checkedValue) {
     return 0;
   }
 }
-
+// FRONT END LOGIC
 $(document).ready(function() {
   // debugger;
   var player = new Player("X");
